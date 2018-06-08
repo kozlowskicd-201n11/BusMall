@@ -65,13 +65,13 @@ function handleClick(event) {
     showTotals();
   }
   if(event.target.id === 'allThreeImages') {
-    return alert('Need to click on an image.');
+    return alert('Please click on the image you would like to select.');
   }
   Product.totalClicks += 1;
   for(var i = 0; i < Product.names.length; i++) {
     if(event.target.id === Product.allProducts[i].name) {
       Product.allProducts[i].votes += 1;
-      console.log(event.target.id + ' has ' + Product.allProducts[i].votes + ' votes in a total of ' + Product.allProducts[i].views + ' views.');
+      console.log(event.target.id + ' has ' + Product.allProducts[i].votes + ' votes and has been viewed ' + Product.allProducts[i].views + ' times.');
     }
   }
   placeImgs();
@@ -80,7 +80,7 @@ function handleClick(event) {
 function showTotals() {
   for(var i = 0; i < Product.allProducts.length; i++) {
     var liEl = document.createElement('li');
-    liEl.textContent = Product.allProducts[i].name + ' has ' + Product.allProducts[i].votes + ' votes in ' + Product.allProducts[i].views + ' views.';
+    liEl.textContent = Product.allProducts[i].name + ' has ' + Product.allProducts[i].votes + ' votes and has been viewed ' + Product.allProducts[i].views + ' times.';
     Product.listTotal.appendChild(liEl);
   }
 }

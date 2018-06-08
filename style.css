@@ -1,4 +1,11 @@
+html {
+    background-color:bisque
+}
 img {
     width: 200px;
     margin: 20px;
+}
+h1 {
+    text-align: center;
+
 }
