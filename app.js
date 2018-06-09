@@ -59,8 +59,7 @@ function placeImgs() {
 }
 
 function handleClick(event) {
-  console.log(Product.totalClicks, 'total clicks');
-  if(Product.totalClicks > 24) {
+  if(Product.totalClicks > 23) {
     Product.imgSection.removeEventListener('click', handleClick);
     showTotals();
   }
@@ -68,6 +67,7 @@ function handleClick(event) {
     return alert('Please click on the image you would like to select.');
   }
   Product.totalClicks += 1;
+  console.log('Clicks:' + Product.totalClicks);
   for(var i = 0; i < Product.names.length; i++) {
     if(event.target.id === Product.allProducts[i].name) {
       Product.allProducts[i].votes += 1;
