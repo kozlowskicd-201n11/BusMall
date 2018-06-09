@@ -62,6 +62,7 @@ function handleClick(event) {
   if(Product.totalClicks > 23) {
     Product.imgSection.removeEventListener('click', handleClick);
     showTotals();
+    makeChart();
   }
   if(event.target.id === 'allThreeImages') {
     return alert('Please click on the image you would like to select.');
@@ -71,6 +72,7 @@ function handleClick(event) {
   for(var i = 0; i < Product.names.length; i++) {
     if(event.target.id === Product.allProducts[i].name) {
       Product.allProducts[i].votes += 1;
+      Product.allProducts[i].totalVotes += 1;
       console.log(event.target.id + ' has ' + Product.allProducts[i].votes + ' votes and has been viewed ' + Product.allProducts[i].views + ' times.');
     }
   }
@@ -86,3 +88,37 @@ function showTotals() {
 }
 Product.imgSection.addEventListener('click', handleClick);
 placeImgs();
+
+// CHART
+function makeChart() {
+  var voteArray = [];
+
+  for (var j = 0; j < Product.allProducts.length; j++) {
+    voteArray.push(Product.allProducts[j].votes);
+  }
+
+  var colors = ['blue', 'green', 'orange', 'red', 'purple', 'yellow', 'brown', 'maroon', 'forestgreen', 'pink', 'cyan', 'beige', 'grey', 'violet', 'darkblue', 'tan', 'magenta', 'darkgreen', 'tomato', 'darkorange'];
+
+  var ctx = document.getElementById('votechart').getContext('2d');
+
+  var voteChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: Product.names,
+      datasets: [{
+        label: '# of Votes',
+        data: voteArray,
+        backgroundColor: colors
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+}
