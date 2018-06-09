@@ -1,0 +1,18 @@
+html {
+    background-color:bisque
+}
+img {
+    width: 200px;
+    margin: 20px;
+}
+h1 {
+    text-align: center;
+    font-family: Georgia, serif;
+}
+p {
+    font-size: 26px;
+    text-align: center; 
+}
+#allThreeImages {
+    text-align: center;
+}
