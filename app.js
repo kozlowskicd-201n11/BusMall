@@ -72,11 +72,15 @@ function handleClick(event) {
   for(var i = 0; i < Product.names.length; i++) {
     if(event.target.id === Product.allProducts[i].name) {
       Product.allProducts[i].votes += 1;
-      Product.allProducts[i].totalVotes += 1;
       console.log(event.target.id + ' has ' + Product.allProducts[i].votes + ' votes and has been viewed ' + Product.allProducts[i].views + ' times.');
     }
   }
   placeImgs();
+}
+
+function hideTotals() {
+  var ulEl = document.getElementById('listTotal');
+  ulEl.parentNode.removeChild(ulEl);
 }
 
 function showTotals() {
@@ -88,6 +92,7 @@ function showTotals() {
 }
 Product.imgSection.addEventListener('click', handleClick);
 placeImgs();
+
 
 // CHART
 function makeChart() {
@@ -121,4 +126,5 @@ function makeChart() {
       }
     }
   });
+  hideTotals();
 }
