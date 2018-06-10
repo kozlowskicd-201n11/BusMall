@@ -3,7 +3,7 @@ html {
 }
 img {
     width: 200px;
-    margin: 0px 20px;
+    margin: 8px 20px;
 }
 h1 {
     text-align: center;
@@ -11,10 +11,30 @@ h1 {
 }
 p {
     font-size: 26px;
-    text-align: center; 
+    text-align: center;
+    padding: 0px 100px;
 }
 #allThreeImages {
-    text-align: center;
-    height: 200px;
-    margin-bottom: 50px;
+    height: 400px;
+    margin: auto;
+}
+#allThreeImages li {
+    float: left;
+    list-style-type: none;
+    border: 2px black solid;
+    height: 320px;
+    padding: 5px;
+    margin-left: 158px;
+}
+#left {
+    
+}
+#right {
+    
+}
+#center {
+        
+}
+#chartSection {
+    margin: 0px 10% 10% 10%;
 }

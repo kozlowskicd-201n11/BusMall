@@ -81,6 +81,10 @@ function handleClick(event) {
 function hideTotals() {
   var ulEl = document.getElementById('listTotal');
   ulEl.parentNode.removeChild(ulEl);
+  var imgEl = document.getElementById('allThreeImages');
+  imgEl.parentNode.removeChild(imgEl);
+  var pEl = document.getElementById('ptag');
+  pEl.textContent = 'Study completed, thank you.  Results shown below.';
 }
 
 function showTotals() {
@@ -106,7 +110,7 @@ function makeChart() {
 
   var ctx = document.getElementById('votechart').getContext('2d');
 
-  var voteChart = new Chart(ctx, {
+  new Chart(ctx, {
     type: 'bar',
     data: {
       labels: Product.names,
