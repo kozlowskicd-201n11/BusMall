@@ -72,11 +72,19 @@ function handleClick(event) {
   for(var i = 0; i < Product.names.length; i++) {
     if(event.target.id === Product.allProducts[i].name) {
       Product.allProducts[i].votes += 1;
-      Product.allProducts[i].totalVotes += 1;
       console.log(event.target.id + ' has ' + Product.allProducts[i].votes + ' votes and has been viewed ' + Product.allProducts[i].views + ' times.');
     }
   }
   placeImgs();
+}
+
+function hideTotals() {
+  var ulEl = document.getElementById('listTotal');
+  ulEl.parentNode.removeChild(ulEl);
+  var imgEl = document.getElementById('allThreeImages');
+  imgEl.parentNode.removeChild(imgEl);
+  var pEl = document.getElementById('ptag');
+  pEl.textContent = 'Study completed, thank you.  Results shown below.';
 }
 
 function showTotals() {
@@ -88,6 +96,7 @@ function showTotals() {
 }
 Product.imgSection.addEventListener('click', handleClick);
 placeImgs();
+
 
 // CHART
 function makeChart() {
@@ -101,7 +110,7 @@ function makeChart() {
 
   var ctx = document.getElementById('votechart').getContext('2d');
 
-  var voteChart = new Chart(ctx, {
+  new Chart(ctx, {
     type: 'bar',
     data: {
       labels: Product.names,
@@ -121,4 +130,5 @@ function makeChart() {
       }
     }
   });
+  hideTotals();
 }
