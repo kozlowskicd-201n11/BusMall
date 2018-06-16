@@ -25,8 +25,10 @@ function Product(name) {
   Product.allProducts.push(this);
 }
 
-for (var i = 0; i < Product.names.length; i++) {
-  new Product(Product.names[i]);
+function makeProducts() {
+  for (var i = 0; i < Product.names.length; i++) {
+    new Product(Product.names[i]);
+  }
 }
 
 function makeRandom() {
@@ -56,8 +58,13 @@ function placeImgs() {
     Product.allProducts[currentlyShowing[i]].views++;
     Product.justBeenViewed[i] = currentlyShowing[i];
   }
+  // SET LOCAL STORAGE -----------------------
+  var stringData = JSON.stringify(Product.allProducts);
+  localStorage.setItem('data', stringData);
+  //------------------------------------------
 }
 
+// CLICK HANDLER -----------------------------
 function handleClick(event) {
   if(Product.totalClicks > 23) {
     Product.imgSection.removeEventListener('click', handleClick);
@@ -77,6 +84,7 @@ function handleClick(event) {
   }
   placeImgs();
 }
+//---------------------------------------------
 
 function hideTotals() {
   var ulEl = document.getElementById('listTotal');
@@ -95,10 +103,8 @@ function showTotals() {
   }
 }
 Product.imgSection.addEventListener('click', handleClick);
-placeImgs();
 
-
-// CHART
+// CHART ---------------------------------------------
 function makeChart() {
   var voteArray = [];
 
@@ -132,3 +138,21 @@ function makeChart() {
   });
   hideTotals();
 }
+//-------------------------------------------------
+
+// GET LOCAL STORAGE ------------------------------
+makeProducts();
+(function getStorage() {
+  if (localStorage.data) {
+    var stringData = localStorage.getItem('data');
+    var parsedData = JSON.parse(stringData);
+    console.log(parsedData);
+    for (var i = 0; i < Product.allProducts.length; i++) {
+      Product.allProducts[i].views = parsedData[i].views;
+      Product.allProducts[i].votes = parsedData[i].votes;
+    }
+  }
+})();
+//-------------------------------------------------
+placeImgs();
+
