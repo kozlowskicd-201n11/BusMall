@@ -152,6 +152,10 @@ makeProducts();
       Product.allProducts[i].votes = parsedData[i].votes;
     }
   }
+  else {
+    var newData = JSON.stringify(Product.allProducts);
+    localStorage.setItem('data', newData);
+  }
 })();
 //-------------------------------------------------
 placeImgs();
