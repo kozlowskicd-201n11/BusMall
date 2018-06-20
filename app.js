@@ -9,6 +9,7 @@ Product.imgSection = document.getElementById('allThreeImages');
 Product.justBeenViewed = [];
 Product.totalClicks = 0;
 
+// PRODUCT OBJECT CONSTRUCTOR -------------
 function Product(name) {
   this.name = name;
   if (this.name === 'usb') {
@@ -31,6 +32,7 @@ function makeProducts() {
   }
 }
 
+// RANDOMIZE AND PLACE IMAGES ---------------
 function makeRandom() {
   return Math.floor(Math.random() * Product.names.length);
 }
@@ -61,7 +63,7 @@ function placeImgs() {
   // SET LOCAL STORAGE -----------------------
   var stringData = JSON.stringify(Product.allProducts);
   localStorage.setItem('data', stringData);
-  //------------------------------------------
+
 }
 
 // CLICK HANDLER -----------------------------
@@ -84,8 +86,8 @@ function handleClick(event) {
   }
   placeImgs();
 }
-//---------------------------------------------
 
+//SHOW/HIDE TOTALS ---------------------------------------------
 function hideTotals() {
   var ulEl = document.getElementById('listTotal');
   ulEl.parentNode.removeChild(ulEl);
@@ -138,7 +140,6 @@ function makeChart() {
   });
   hideTotals();
 }
-//-------------------------------------------------
 
 // GET LOCAL STORAGE ------------------------------
 makeProducts();
@@ -157,6 +158,6 @@ makeProducts();
     localStorage.setItem('data', newData);
   }
 })();
-//-------------------------------------------------
+
 placeImgs();
 
