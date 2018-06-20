@@ -123,7 +123,7 @@ function makeChart() {
     data: {
       labels: Product.names,
       datasets: [{
-        label: '# of Votes',
+        label: 'Total of All Stored Responses',
         data: voteArray,
         backgroundColor: colors
       }]
